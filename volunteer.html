@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Registration</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:wheat;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: black;
+        }
+        nav {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .top-image {
+            display: block;
+            margin: 20px auto;
+            max-width: 600px;
+            width: 100%;
+            border-radius: 10px;
+        }
+        section {
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 50%;
+            border-radius: 10px;
+        }
+        input, select, button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background: #ff5e62;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background:#ff3b4f;
+        }
+        .update-profile {
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            width: 50%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <section id="volunteers">
+        <h2>Volunteer Registration</h2>
+        <form id="volunteerForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <select id="task">
+                <option value="teaching">Teaching</option>
+                <option value="cooking">Cooking</option>
+                <option value="fundraising">Fundraising</option>
+            </select>
+            <button type="submit">Register</button>
+        </form>
+        <h3>Registered Volunteers</h3>
+        <ul id="volunteerList"></ul>
+    </section>
+
+    <section class="update-profile">
+        <h2>Update Your Profile</h2>
+        <button onclick="window.location.href='settings.html'">Go to Settings</button>
+    </section>
+
+    <script>
+        document.getElementById('volunteerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const task = document.getElementById('task').value;
+            
+            if (name && email) {
+                const listItem = document.createElement('li');
+                listItem.textContent = ${name} - ${task};
+                document.getElementById('volunteerList').appendChild(listItem);
+                alert('Volunteer Registered Successfully!');
+                this.reset();
+            }
+        });
+    </script>
+</body>
+</html>
